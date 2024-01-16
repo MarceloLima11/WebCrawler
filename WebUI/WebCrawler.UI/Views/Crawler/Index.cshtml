@@ -1,0 +1,32 @@
+﻿@model WebCrawler.UI.Models.RadixViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Web Crawler";
+}
+﻿
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/WebCrawler.UI.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <main id="container">
+        <div class="container_history">
+
+        </div>
+
+        <div class="container_request">
+            <form asp-controller="Crawler" asp-action="TrackRadix" method="get">
+                <input asp-for="Path" placeholder="https://currentexemple.com" />
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
+

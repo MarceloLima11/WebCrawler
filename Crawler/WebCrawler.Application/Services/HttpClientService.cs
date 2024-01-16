@@ -1,4 +1,5 @@
-﻿using System;
+﻿using WebCrawler.Application.Extensions;
+using WebCrawler.Core.Entities;
 
 namespace WebCrawler.Application.Services
 {
@@ -9,12 +10,15 @@ namespace WebCrawler.Application.Services
         public HttpClientService(IHttpClientFactory httpClientFactory)
         { _httpClientFactory = httpClientFactory; }
 
-        public async void Test(string path)
+        public async Task ProcessUrl(string path)
         {
             using var httpClient = _httpClientFactory.CreateClient();
 
             try
             {
+                path.Clean();
+                Radix radix = new(path);
+
                 HttpResponseMessage response = await httpClient.GetAsync(path);
 
                 if (response.IsSuccessStatusCode)

@@ -2,7 +2,7 @@
 
 namespace WebCrawler.Core.Entities
 {
-    sealed class Radix
+    public sealed class Radix
     {
         private string path;
 

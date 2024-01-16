@@ -5,13 +5,13 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebUI", "WebUI", "{3A740F06-0B97-41F3-9473-4463A07AEEB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCrawler.UI", "WebUI\WebCrawler.UI\WebCrawler.UI.csproj", "{C79B6102-7840-4386-BC13-19B259E14102}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCrawler.UI", "WebUI\WebCrawler.UI\WebCrawler.UI.csproj", "{C79B6102-7840-4386-BC13-19B259E14102}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Crawler", "Crawler", "{83FA2E3A-FE80-4269-9D86-21483B54F407}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCrawler.Application", "Crawler\WebCrawler.Application\WebCrawler.Application.csproj", "{CDA926DA-0246-40D6-A526-EA853A19C40F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCrawler.Application", "Crawler\WebCrawler.Application\WebCrawler.Application.csproj", "{CDA926DA-0246-40D6-A526-EA853A19C40F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCrawler.Core", "Crawler\WebCrawler.Core\WebCrawler.Core.csproj", "{02309B22-A4FE-4366-AA61-D3C6AC0292AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCrawler.Core", "Crawler\WebCrawler.Core\WebCrawler.Core.csproj", "{02309B22-A4FE-4366-AA61-D3C6AC0292AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
