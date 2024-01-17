@@ -4,11 +4,11 @@ namespace WebCrawler.Core.Entities
 {
     public sealed class Radix
     {
-        private string path;
+        public string Path { get; }
 
         public Radix(string path)
         {
-            this.path = IsValidUrl(path) ? path: throw new ArgumentException("URL is invalid or not an HTTP/HTTPS URL.");
+            this.Path = IsValidUrl(path) ? path: throw new ArgumentException("URL is invalid or not an HTTP/HTTPS URL.");
         }
 
         static bool IsValidUrl(string url)

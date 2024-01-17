@@ -6,11 +6,11 @@ namespace WebCrawler.UI.Controllers
 {
     public class CrawlerController : Controller
     {
-        private readonly HttpClientService _httpClientService;
-        public CrawlerController(HttpClientService httpClientService)
+        private readonly CrawlService _httpClientService;
+        public CrawlerController(CrawlService httpClientService)
         { 
             _httpClientService = httpClientService ?? 
-                throw new ArgumentNullException(nameof(HttpClientService));
+                throw new ArgumentNullException(nameof(CrawlService));
         }
 
         public IActionResult Index()
@@ -19,7 +19,7 @@ namespace WebCrawler.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> TrackRadix(RadixViewModel radix)
+        public async Task<IActionResult> GetProcessUrl(RadixViewModel radix)
         {
             try
             {

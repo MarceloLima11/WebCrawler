@@ -3,8 +3,7 @@ using WebCrawler.Application.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddHttpClient();
-builder.Services.AddTransient<HttpClientService>();
+builder.Services.AddTransient<CrawlService>();
 
 var app = builder.Build();
 
