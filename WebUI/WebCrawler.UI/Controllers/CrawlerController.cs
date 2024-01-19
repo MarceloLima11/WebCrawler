@@ -23,7 +23,7 @@ namespace WebCrawler.UI.Controllers
         {
             try
             {
-                await _httpClientService.ProcessUrl(radix.Path);
+                var details = await _httpClientService.ProcessUrl(radix.Path);
 
                 return NotFound();
             }
