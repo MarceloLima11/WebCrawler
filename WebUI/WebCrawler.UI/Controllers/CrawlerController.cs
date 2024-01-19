@@ -25,7 +25,14 @@ namespace WebCrawler.UI.Controllers
             {
                 var details = await _httpClientService.ProcessUrl(radix.Path);
 
-                return NotFound();
+                return View("Result", new DetailsViewModel
+                {
+                    Errors = details.Errors,
+                    Duration = details.Duration,
+                    LinksFound = details.LinksFound,
+                    CrawlingId = details.CrawlingId,
+                    CrawlingSucceded = details.CrawlingSucceded,
+                });
             }
             catch (Exception ex) 
             { throw new Exception(ex.Message); }

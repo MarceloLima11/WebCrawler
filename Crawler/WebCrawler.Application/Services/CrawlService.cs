@@ -1,7 +1,7 @@
 ﻿using HtmlAgilityPack;
-using System;
 using System.Diagnostics;
 using System.Net;
+using Utils;
 using WebCrawler.Application.Extensions;
 using WebCrawler.Core.Entities;
 
@@ -23,7 +23,7 @@ namespace WebCrawler.Application.Services
 
         public async Task<Details> ProcessUrl(string pathRequest)
         {
-            string path = pathRequest.Clean();
+            string path = Url.RemoveUrlBar(pathRequest.Clean());
             Radix radix = new(path);
 
             try
@@ -39,24 +39,33 @@ namespace WebCrawler.Application.Services
                 {
                     foreach (var link in links)
                     {
-                        string childUrl = link.GetAttributeValue("href", "");
-                        if (childUrl.IsSafeUrl() && !_queue.HasBeenCrawled(childUrl))
+                        string childUrl = link.GetAttributeValue("href", "").Clean();
+                        if (Url.IsSafeUrl(childUrl))
                         {
-                            _queue.Post(childUrl);
+                            if (!Url.IsValidUrl(childUrl))
+                            {
+                                _stopwatch.Stop();
+                                _details.AddUpDuration(_stopwatch.Elapsed);
+                                _details.Errors.Add($"Inválid URL: {childUrl}");
+                                _queue.Remove(childUrl);
+                                continue;
+                            }
+
+                            _queue.Post(Url.RemoveUrlBar(childUrl));
                             _details.LinksFound++;
                         }
                     }
 
                     _queue.Remove(radix.Path);
                     _stopwatch.Stop();
-                    _details.Duration.Add(_stopwatch.Elapsed);
+                    _details.AddUpDuration(_stopwatch.Elapsed);
                     if (_queue.Links.Count != 0)
                         await ProcessUrl(_queue.Top());
                 }
             }
-            catch (WebException err)
+            catch (Exception err)
             {
-                _details.Errors.Add($"Error processing URL {radix.Path}: {err.Message}");
+                _details.Errors.Add($"Critical error processing URL {radix.Path}: {err.Message}");
                 _details.CrawlingSucceded = false;
                 return _details;
             }

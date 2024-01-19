@@ -10,14 +10,14 @@
             return Links.First();
         }
 
-        public bool HasBeenCrawled(string link)
+        bool HasBeenCrawled(string link)
         { 
             return crawled.Contains(link);
         }
 
         public void Post(string link)
         {
-            if (Links.Contains(link))
+            if (HasBeenCrawled(link))
                 return;
 
             Links.Add(link);
