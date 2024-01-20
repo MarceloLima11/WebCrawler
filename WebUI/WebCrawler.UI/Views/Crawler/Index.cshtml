@@ -15,18 +15,18 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
-    <main id="container">
-        <div class="container_history">
+    <div id="container">
+        <img src="~/images/webcrawler.png">
 
-        </div>
+        <form>
+            <input type="text" />
+            <button type="submit">
+                <div class="ico">
 
-        <div class="container_request">
-            <form asp-controller="Crawler" asp-action="GetProcessUrl" method="get">
-                <input asp-for="Path" placeholder="https://currentexemple.com" />
-                <button type="submit">Enviar</button>
-            </form>
-        </div>
-    </main>
+                </div>
+            </button>
+        </form>
+    </div>
 </body>
 </html>
 
