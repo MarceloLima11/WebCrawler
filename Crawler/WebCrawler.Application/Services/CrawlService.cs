@@ -45,7 +45,6 @@ namespace WebCrawler.Application.Services
                             if (!Url.IsValidUrl(childUrl))
                             {
                                 _stopwatch.Stop();
-                                _details.AddUpDuration(_stopwatch.Elapsed);
                                 _details.Errors.Add($"Inválid URL: {childUrl}");
                                 _queue.Remove(childUrl);
                                 continue;
@@ -58,7 +57,6 @@ namespace WebCrawler.Application.Services
 
                     _queue.Remove(radix.Path);
                     _stopwatch.Stop();
-                    _details.AddUpDuration(_stopwatch.Elapsed);
                     if (_queue.Links.Count != 0)
                         await ProcessUrl(_queue.Top());
                 }
@@ -67,10 +65,14 @@ namespace WebCrawler.Application.Services
             {
                 _details.Errors.Add($"Critical error processing URL {radix.Path}: {err.Message}");
                 _details.CrawlingSucceded = false;
+                _stopwatch.Stop();
+                _details.AddUpDuration(_stopwatch.Elapsed);
                 return _details;
             }
 
             _details.CrawlingSucceded = true;
+            _stopwatch.Stop();
+            _details.AddUpDuration(_stopwatch.Elapsed);
             return _details;
         }
     }

@@ -1,9 +1,12 @@
+using WebCrawler.Application.Interfaces;
 using WebCrawler.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddTransient<CrawlService>();
+builder.Services.AddTransient<IDocumentGenerator, PDFGeneratorService>();
 
 var app = builder.Build();
 

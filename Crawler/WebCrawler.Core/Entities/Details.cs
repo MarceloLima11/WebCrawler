@@ -1,10 +1,13 @@
-﻿namespace WebCrawler.Core.Entities
+﻿using System.Diagnostics;
+
+namespace WebCrawler.Core.Entities
 {
     public sealed class Details
     {
         public Guid CrawlingId { get; private set; }
         public bool CrawlingSucceded { get; set; }
         public int LinksFound { get; set; }
+        public List<string> CrawledLinks { get; set; }
         public TimeSpan Duration { get; set; }
         public List<string> Errors { get; private set; } = [];
 
@@ -12,7 +15,7 @@
 
         public void AddUpDuration(TimeSpan time)
         {
-            Duration += time;
+            Duration = time;
         }
 
         public void PostError(string error)

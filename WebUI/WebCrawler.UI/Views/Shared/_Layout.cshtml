@@ -8,12 +8,26 @@
     <link href="~/css/main.css" rel="stylesheet" asp-append-version="true" />
 </head>
 <body>
-    <main class="container">
-        @RenderBody()
-    </main>
+    <div class="container">
+        <main class="home">
+            @RenderBody()
+        </main>
 
-    <footer>
+        <footer class="container_footer">
+            <ul class="links">
+                <li>
+                    <a href="https://www.linkedin.com/in/marcelo-lima11/" target="_blank">LinkedIn</a>
+                </li>
+                <li>
+                    <a href="https://github.com/MarceloLima11" target="_blank">Github</a>
+                </li>
+                <li>
+                    <a href="https://api.whatsapp.com/send?0=pt_BR&phone=13997372895" target="_blank">WhatsApp</a>
+                </li>
+            </ul>
+            <p class="copyright">&copy; WebCrawler 2024. All Rights Reserved.</p>
+        </footer>
+    </div>
 
-    </footer>
 </body>
 </html>

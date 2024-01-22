@@ -19,7 +19,7 @@ namespace WebCrawler.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetProcessUrl(RadixViewModel radix)
+        public async Task<IActionResult> ProcessUrl(RadixViewModel radix)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace WebCrawler.UI.Controllers
                     Duration = details.Duration,
                     LinksFound = details.LinksFound,
                     CrawlingId = details.CrawlingId,
-                    CrawlingSucceded = details.CrawlingSucceded,
+                    Succeded = details.CrawlingSucceded,
                 });
             }
             catch (Exception ex) 
