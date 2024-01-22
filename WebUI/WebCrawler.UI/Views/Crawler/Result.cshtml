@@ -1,51 +1,49 @@
 ﻿@model WebCrawler.UI.Models.DetailsViewModel
 
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
-
-<html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Result</title>
+    <link rel="stylesheet" href="~/css/result.css" />
 </head>
-<body>
+<div class="result">
+    <h1><span>Web</span> Crawling</h1>
 
-<div>
-    <h4>DetailsViewModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CrawlingId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CrawlingId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CrawlingSucceded)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CrawlingSucceded)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LinksFound)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LinksFound)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Duration)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Duration)
-        </dd>
-    </dl>
+    <div class="content">
+        <div class="content_logo">
+            <img src="~/images/webcrawler_logo.png" />
+        </div>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CrawlingId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CrawlingId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Succeded)
+            </dt>
+            <dd class="col-sm-10" style="background-color: @(Model.Succeded ? "green" : "red")">
+                @if (Model.Succeded)
+                {
+                    <span style="color:white; font-weight:500;" class="badge badge-success">Success</span>
+                }
+                else
+                {
+                    <span style="color:white; font-weight:500;" class="badge badge-danger">Fail</span>
+                }
+
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LinksFound)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LinksFound)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Duration)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Duration)
+            </dd>
+        </dl>
+    </div>
 </div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>
-</body>
-</html>

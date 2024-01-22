@@ -1,4 +1,6 @@
-﻿*,
+﻿@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*,
 html,
 body {
     margin: 0;
@@ -6,6 +8,61 @@ body {
 }
 
 .container {
-    background: #F3F3F3;
     height: 100vh;
+    color: #72798F;
+    font-family: 'Roboto', sans-serif;
+}
+
+.home {
+    height: 70%;
+}
+
+.container_footer {
+    align-items: center;
+    display: flex;
+   flex-direction:column;
+    flex: 1;
+    height: 30%;
+    width: 100%;
+    padding: 26px 0;
+    justify-content:flex-end;
+}
+
+.container_footer .links {
+    justify-content: space-around;
+    flex: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.container_footer .links li:first-child:before {
+    content: "";
+}
+
+.container_footer .links li:first-child{
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.container_footer .links li {
+    display: inline-flex;
+    position:relative;
+    margin-left: 1em;
+    padding-left: 1.2em;
+}
+
+.container_footer .links li::before{
+    content: "•";
+    position: absolute;
+    left: 0;
+}
+
+.container_footer .copyright{
+    margin-top: 1em;
+}
+
+.links li a {
+    text-decoration: none;
+    color:currentColor;
 }

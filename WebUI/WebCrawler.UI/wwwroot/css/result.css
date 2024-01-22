@@ -1,0 +1,56 @@
+﻿.result{
+    height:100%;
+    overflow: hidden;
+}
+
+.result h1 {
+    text-transform: uppercase;
+    margin: 1em;
+    text-align:center;
+}
+
+.result h1 span {
+    color: #2ECC71;
+}
+
+.content {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .content_logo {
+    text-align:center;
+    width: 50%;
+}
+
+.content .content_logo img {
+    width: 40%;
+}
+
+.content .row {
+    width: 50%;
+    text-align: center;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.row dt {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.row dd {
+    margin-bottom: 10px;
+}
+
+    dd.col-sm-10 {
+        background-color: #f4f4f4;
+        padding: 5px;
+        border-radius: 5px;
+    }

@@ -15,11 +15,20 @@ namespace WebCrawler.UI.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var test = new DetailsViewModel
+            {
+                Errors = [],
+                Duration = TimeSpan.MinValue,
+                LinksFound = 20,
+                CrawlingId = Guid.NewGuid(),
+                Succeded = false,
+            };
+
+            return View("Result", test);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetProcessUrl(RadixViewModel radix)
+        public async Task<IActionResult> ProcessUrl(RadixViewModel radix)
         {
             try
             {
@@ -31,7 +40,7 @@ namespace WebCrawler.UI.Controllers
                     Duration = details.Duration,
                     LinksFound = details.LinksFound,
                     CrawlingId = details.CrawlingId,
-                    CrawlingSucceded = details.CrawlingSucceded,
+                    Succeded = details.CrawlingSucceded,
                 });
             }
             catch (Exception ex) 
