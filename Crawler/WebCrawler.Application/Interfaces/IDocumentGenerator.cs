@@ -2,6 +2,6 @@
 {
     public interface IDocumentGenerator
     {
-        byte[] GenerateDocument(List<string> content);
+        MemoryStream GenerateDocument(List<string> content);
     }
 }

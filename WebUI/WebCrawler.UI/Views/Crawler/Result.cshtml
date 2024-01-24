@@ -44,6 +44,12 @@
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.FormattedDuration)
             </dd>
+            <dt class="col-sm-2">
+                Get Links
+            </dt>
+            <dd class="col-sm-10">
+                <button onClick="location.href='@Url.Action("GenerateDocument", "Crawler", new List<string>())'" class="btn btn-primary"><img src="~/images/download.svg" /> Download</button>
+            </dd>
         </dl>
     </div>
 </div>

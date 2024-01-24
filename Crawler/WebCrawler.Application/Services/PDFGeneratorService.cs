@@ -1,4 +1,5 @@
-﻿using iText.Kernel.Font;
+﻿using iText.Kernel.Exceptions;
+using iText.Kernel.Font;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
@@ -11,25 +12,35 @@ namespace WebCrawler.Application.Services
         public PDFGeneratorService()
         {}
 
-        public byte[] GenerateDocument(List<string> links)
+        public MemoryStream GenerateDocument(List<string> links)
         {
-            using (MemoryStream stream = new())
+            try
             {
-                using (PdfWriter writer = new(stream))
+                using (MemoryStream stream = new())
                 {
-                    using (PdfDocument pdf = new(writer))
+                    using (PdfWriter writer = new(stream))
                     {
-                        Document document = new(pdf);
-
-                        document.Add(new Paragraph("Links").SetFont(PdfFontFactory.CreateFont()).SetFontSize(16f));
-                        for (int index = 0; index <= links.Count; index++)
+                        using (PdfDocument pdf = new(writer))
                         {
-                            document.Add(new Paragraph($"{index+1}. {links[index]}"));
+                            Document document = new(pdf);
+
+                            document.Add(new Paragraph("Links").SetFont(PdfFontFactory.CreateFont()).SetFontSize(16f));
+                            for (int index = 0; index < links.Count; index++)
+                            {
+                                document.Add(new Paragraph($"{index + 1}. {links[index]}"));
+                            }
                         }
                     }
-                }
 
-                return stream.ToArray();
+                    MemoryStream copyStream = new MemoryStream(stream.ToArray());
+                    return copyStream;
+                }
+            }
+            catch (PdfException pdfEx)
+            {
+                Console.WriteLine($"PdfException Message: {pdfEx.Message}");
+                Console.WriteLine($"PdfException Stack Trace: {pdfEx.StackTrace}");
+                throw;
             }
         }
     }

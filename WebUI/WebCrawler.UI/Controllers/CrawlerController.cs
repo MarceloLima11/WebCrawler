@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using WebCrawler.Application.Interfaces;
 using WebCrawler.Application.Services;
 using WebCrawler.UI.Models;
 
@@ -7,15 +9,26 @@ namespace WebCrawler.UI.Controllers
     public class CrawlerController : Controller
     {
         private readonly CrawlService _httpClientService;
-        public CrawlerController(CrawlService httpClientService)
+        private readonly IDocumentGenerator _documentGenerator;
+
+        public CrawlerController(CrawlService httpClientService
+            , IDocumentGenerator documentGenerator)
         { 
             _httpClientService = httpClientService ?? 
                 throw new ArgumentNullException(nameof(CrawlService));
+            _documentGenerator = documentGenerator;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View("Result", new DetailsViewModel
+            {
+                Errors = [],
+                Duration = TimeSpan.MaxValue,
+                LinksFound = 20,
+                CrawlingId = Guid.NewGuid(),
+                Succeded = false,
+            });
         }
 
         [HttpGet]
@@ -35,6 +48,24 @@ namespace WebCrawler.UI.Controllers
                 });
             }
             catch (Exception ex) 
+            { throw new Exception(ex.Message); }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GenerateDocument(List<string> links)
+        {
+            try
+            {
+                var stream = _documentGenerator.GenerateDocument(links);
+
+                stream.Seek(0, SeekOrigin.Begin);
+                return new FileStreamResult(stream, "application/pdf")
+                {
+                    FileDownloadName = "exemplo.pdf"
+                };
+
+            }
+            catch (Exception ex)
             { throw new Exception(ex.Message); }
         }
     }
