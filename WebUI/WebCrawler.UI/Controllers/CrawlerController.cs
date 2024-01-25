@@ -21,14 +21,7 @@ namespace WebCrawler.UI.Controllers
 
         public IActionResult Index()
         {
-            return View("Result", new DetailsViewModel
-            {
-                Errors = [],
-                Duration = TimeSpan.MaxValue,
-                LinksFound = 20,
-                CrawlingId = Guid.NewGuid(),
-                Succeded = false,
-            });
+            return View();
         }
 
         [HttpGet]
@@ -43,6 +36,7 @@ namespace WebCrawler.UI.Controllers
                     Errors = details.Errors,
                     Duration = details.Duration,
                     LinksFound = details.LinksFound,
+                    Links = details.CrawledLinks,
                     CrawlingId = details.CrawlingId,
                     Succeded = details.CrawlingSucceded,
                 });
@@ -52,7 +46,7 @@ namespace WebCrawler.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GenerateDocument(List<string> links)
+        public IActionResult GenerateDocument(List<string> links)
         {
             try
             {
@@ -61,7 +55,7 @@ namespace WebCrawler.UI.Controllers
                 stream.Seek(0, SeekOrigin.Begin);
                 return new FileStreamResult(stream, "application/pdf")
                 {
-                    FileDownloadName = "exemplo.pdf"
+                    FileDownloadName = "document.pdf"
                 };
 
             }

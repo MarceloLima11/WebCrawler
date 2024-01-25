@@ -67,12 +67,14 @@ namespace WebCrawler.Application.Services
                 _details.CrawlingSucceded = false;
                 _stopwatch.Stop();
                 _details.AddUpDuration(_stopwatch.Elapsed);
+                _details.CrawledLinks = _queue.GetCrawledLinks();
                 return _details;
             }
 
             _details.CrawlingSucceded = true;
             _stopwatch.Stop();
             _details.AddUpDuration(_stopwatch.Elapsed);
+            _details.CrawledLinks = _queue.GetCrawledLinks();
             return _details;
         }
     }

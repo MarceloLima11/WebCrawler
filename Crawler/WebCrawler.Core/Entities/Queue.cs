@@ -28,5 +28,8 @@
             crawled.Add(link);
             Links.Remove(link);
         }
+
+        public HashSet<string> GetCrawledLinks()
+        { return crawled; }
     }
 }
