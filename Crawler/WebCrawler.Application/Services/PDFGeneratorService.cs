@@ -12,7 +12,7 @@ namespace WebCrawler.Application.Services
         public PDFGeneratorService()
         {}
 
-        public MemoryStream GenerateDocument(List<string> links)
+        public MemoryStream GenerateDocument(HashSet<string> links)
         {
             try
             {
@@ -24,10 +24,11 @@ namespace WebCrawler.Application.Services
                         {
                             Document document = new(pdf);
 
+                            var linksList = links.ToList();
                             document.Add(new Paragraph("Links").SetFont(PdfFontFactory.CreateFont()).SetFontSize(16f));
-                            for (int index = 0; index < links.Count; index++)
+                            for (int index = 0; index < linksList.Count; index++)
                             {
-                                document.Add(new Paragraph($"{index + 1}. {links[index]}"));
+                                document.Add(new Paragraph($"{index + 1}. {linksList[index]}"));
                             }
                         }
                     }

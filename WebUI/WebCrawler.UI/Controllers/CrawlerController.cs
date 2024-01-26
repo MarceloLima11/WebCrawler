@@ -45,8 +45,8 @@ namespace WebCrawler.UI.Controllers
             { throw new Exception(ex.Message); }
         }
 
-        [HttpGet]
-        public IActionResult GenerateDocument(List<string> links)
+        [HttpPost]
+        public IActionResult GenerateDocument(HashSet<string> links)
         {
             try
             {

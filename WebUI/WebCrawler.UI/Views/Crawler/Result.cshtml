@@ -48,7 +48,15 @@
                 Get Links
             </dt>
             <dd class="col-sm-10">
-                <button onClick="location.href='@Url.Action("GenerateDocument", "Crawler", Model.Links)'" class="btn btn-primary"><img src="~/images/download.svg" /> Download</button>
+                <form method="post" action="@Url.Action("GenerateDocument", "Crawler")">
+                    @foreach (var link in Model.Links)
+                    {
+                        <input type="hidden" name="links[]" value="@link" />
+                    }
+                    <button type="submit" class="btn btn-primary">
+                        <img src="~/images/download.svg" /> Download
+                    </button>
+                </form>
             </dd>
         </dl>
     </div>
