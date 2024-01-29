@@ -51,6 +51,7 @@ namespace WebCrawler.Application.Services
                             }
 
                             _queue.Post(Url.RemoveUrlBar(childUrl));
+                            _details.CrawledLinks.Add(childUrl);
                             _details.LinksFound++;
                         }
                     }
@@ -67,14 +68,12 @@ namespace WebCrawler.Application.Services
                 _details.CrawlingSucceded = false;
                 _stopwatch.Stop();
                 _details.AddUpDuration(_stopwatch.Elapsed);
-                _details.CrawledLinks = _queue.GetCrawledLinks();
                 return _details;
             }
 
             _details.CrawlingSucceded = true;
             _stopwatch.Stop();
             _details.AddUpDuration(_stopwatch.Elapsed);
-            _details.CrawledLinks = _queue.GetCrawledLinks();
             return _details;
         }
     }

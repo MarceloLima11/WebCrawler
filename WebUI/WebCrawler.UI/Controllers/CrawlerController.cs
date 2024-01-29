@@ -14,8 +14,8 @@ namespace WebCrawler.UI.Controllers
         public CrawlerController(CrawlService httpClientService
             , IDocumentGenerator documentGenerator)
         { 
-            _httpClientService = httpClientService ?? 
-                throw new ArgumentNullException(nameof(CrawlService));
+            _httpClientService = httpClientService 
+                ?? throw new ArgumentNullException(nameof(CrawlService));
             _documentGenerator = documentGenerator;
         }
 
