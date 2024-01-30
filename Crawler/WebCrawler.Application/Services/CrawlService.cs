@@ -45,7 +45,7 @@ namespace WebCrawler.Application.Services
                             if (!Url.IsValidUrl(childUrl))
                             {
                                 _stopwatch.Stop();
-                                _details.Errors.Add($"Inválid URL: {childUrl}");
+                                _details.Errors.Add(childUrl);
                                 _queue.Remove(childUrl);
                                 continue;
                             }

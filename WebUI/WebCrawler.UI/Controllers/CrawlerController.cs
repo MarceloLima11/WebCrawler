@@ -46,11 +46,11 @@ namespace WebCrawler.UI.Controllers
         }
 
         [HttpPost]
-        public IActionResult GenerateDocument(HashSet<string> links)
+        public IActionResult GenerateDocument(HashSet<string> links, List<string> errors)
         {
             try
             {
-                var stream = _documentGenerator.GenerateDocument(links);
+                var stream = _documentGenerator.GenerateDocument(links, errors);
 
                 stream.Seek(0, SeekOrigin.Begin);
                 return new FileStreamResult(stream, "application/pdf")
