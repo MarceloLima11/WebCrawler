@@ -72,3 +72,15 @@
 .btn img {
     width: 8%;
 }
+
+
+@media(max-width: 1000px){
+    .content_logo{
+        display: none;
+    }
+
+    .content .row{
+        width: 90%;
+        margin: 0 10%;
+    }
+}

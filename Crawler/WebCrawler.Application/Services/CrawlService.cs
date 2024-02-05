@@ -40,7 +40,7 @@ namespace WebCrawler.Application.Services
                     foreach (var link in links)
                     {
                         string childUrl = link.GetAttributeValue("href", "").Clean();
-                        if (Url.IsSafeUrl(childUrl))
+                        if (Url.IsSafeUrl(childUrl)) // invert verify? valid after valid
                         {
                             if (!Url.IsValidUrl(childUrl))
                             {

@@ -8,9 +8,9 @@
     height:100%;
 }
 
-#container img {
-    width: 20%;
-}
+    #container img {
+        width: 385px;
+    }
 
 #container form {
     width: 100%;
@@ -20,7 +20,7 @@
 
     #container .form_input {
         height: 38px;
-        width: 26%;
+        width: 400px;
         color: #333;
         border: 1px solid #CFD2DC;
         border-right: none;
@@ -60,3 +60,13 @@
         height: 38px;
         width: 40px;
     }
+
+@media (max-width: 600px){
+    #container img {
+        width: 300px;
+    }
+
+    #container .form_input {
+        width: 80%;
+    }
+}
