@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.IO;
+using System.Net;
 using WebCrawler.Application.Interfaces;
 using WebCrawler.Application.Services;
 using WebCrawler.UI.Models;
@@ -29,6 +29,9 @@ namespace WebCrawler.UI.Controllers
         {
             try
             {
+                if (!Utils.Url.IsValidUrl(radix.Path))
+                    return RedirectToAction("Error", "Error", new { statusCode = HttpStatusCode.BadRequest, message = "Invalid url!" });
+
                 var details = await _httpClientService.ProcessUrl(radix.Path);
 
                 return View("Result", new DetailsViewModel
@@ -41,8 +44,8 @@ namespace WebCrawler.UI.Controllers
                     Succeded = details.CrawlingSucceded,
                 });
             }
-            catch (Exception ex) 
-            { throw new Exception(ex.Message); }
+            catch (Exception ex)
+            { return RedirectToAction("Error", "Error", new { statusCode = HttpStatusCode.BadRequest, message = ex.Message }); }
         }
 
         [HttpPost]
@@ -60,7 +63,7 @@ namespace WebCrawler.UI.Controllers
 
             }
             catch (Exception ex)
-            { throw new Exception(ex.Message); }
+            { return RedirectToAction("Error", "Error", new { statusCode = HttpStatusCode.BadRequest, message = ex.Message }); }
         }
     }
 }

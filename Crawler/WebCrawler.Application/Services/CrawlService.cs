@@ -1,6 +1,5 @@
 ﻿using HtmlAgilityPack;
 using System.Diagnostics;
-using System.Net;
 using Utils;
 using WebCrawler.Application.Extensions;
 using WebCrawler.Core.Entities;

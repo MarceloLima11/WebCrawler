@@ -19,7 +19,7 @@
         <img src="~/images/webcrawler.png">
 
         <form asp-controller="Crawler" asp-action="ProcessUrl" method="get">
-            <input autofocus autocomplete="on" asp-for="Path" class="form_input" type="text" />
+            <input autofocus autocomplete="on" asp-for="Path" class="form_input" type="text" required/>
             <button class="form_button" type="submit">
                 <div class="ico">
                 </div>
