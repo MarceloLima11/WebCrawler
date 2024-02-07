@@ -1,4 +1,6 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿const form = document.querySelector('#form');
+const loading = document.querySelector('.loading');
 
-// Write your JavaScript code.
+form.addEventListener("submit", () => {
+    loading.classList.add("loading_init");
+});

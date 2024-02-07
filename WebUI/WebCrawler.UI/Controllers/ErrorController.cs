@@ -6,10 +6,9 @@ namespace WebCrawler.UI.Controllers
     public class ErrorController : Controller
     {
         [Route("Error")]
-        public IActionResult Error(int code, string message)
+        public IActionResult Error(ErrorViewModel error)
         {
-            var errorViewModel = new ErrorViewModel { Code = 500, Message = message };
-            return View("Error", errorViewModel);
+            return View("Error", error);
         }
     }
 }

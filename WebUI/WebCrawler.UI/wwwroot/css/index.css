@@ -61,6 +61,36 @@
         width: 40px;
     }
 
+    .loading {
+        height: 200px;
+        width: 200px;
+        position: absolute;
+        display: none;
+        border-radius: 6px;
+        background-color: whitesmoke;
+    }
+
+.loading_init {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading div {
+    border: 12px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #22a6b3;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 @media (max-width: 600px){
     #container img {
         width: 300px;

@@ -30,7 +30,7 @@ namespace WebCrawler.UI.Controllers
             try
             {
                 if (!Utils.Url.IsValidUrl(radix.Path))
-                    return RedirectToAction("Error", "Error", new { statusCode = HttpStatusCode.BadRequest, message = "Invalid url!" });
+                    return RedirectToAction("Error", "Error", new ErrorViewModel(HttpStatusCode.BadRequest, "Invalid url!"));
 
                 var details = await _httpClientService.ProcessUrl(radix.Path);
 
@@ -45,7 +45,7 @@ namespace WebCrawler.UI.Controllers
                 });
             }
             catch (Exception ex)
-            { return RedirectToAction("Error", "Error", new { statusCode = HttpStatusCode.BadRequest, message = ex.Message }); }
+            { return RedirectToAction("Error", "Error", new ErrorViewModel(HttpStatusCode.InternalServerError, ex.Message )); }
         }
 
         [HttpPost]
@@ -63,7 +63,7 @@ namespace WebCrawler.UI.Controllers
 
             }
             catch (Exception ex)
-            { return RedirectToAction("Error", "Error", new { statusCode = HttpStatusCode.BadRequest, message = ex.Message }); }
+            { return RedirectToAction("Error", "Error", new ErrorViewModel(HttpStatusCode.InternalServerError, ex.Message)); }
         }
     }
 }

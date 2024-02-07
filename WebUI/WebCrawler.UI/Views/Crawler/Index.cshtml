@@ -13,18 +13,21 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/WebCrawler.UI.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+    <script src="~/js/site.js" defer></script>
 </head>
 <body>
     <div id="container">
         <img src="~/images/webcrawler.png">
 
-        <form asp-controller="Crawler" asp-action="ProcessUrl" method="get">
+        <form asp-controller="Crawler" asp-action="ProcessUrl" method="get" id="form">
             <input autofocus autocomplete="on" asp-for="Path" class="form_input" type="text" required/>
             <button class="form_button" type="submit">
                 <div class="ico">
                 </div>
             </button>
         </form>
+
+        <div class="loading"><div></div></div>
     </div>
 </body>
 </html>
