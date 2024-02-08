@@ -3,8 +3,7 @@
 
 @{
     ViewData["Title"] = "Web Crawler";
-}
-﻿
+}﻿
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -20,14 +19,13 @@
         <img src="~/images/webcrawler.png">
 
         <form asp-controller="Crawler" asp-action="ProcessUrl" method="get" id="form">
-            <input autofocus autocomplete="on" asp-for="Path" class="form_input" type="text" required/>
+            <input autofocus autocomplete="on" asp-for="Path" class="form_input" type="text" required />
             <button class="form_button" type="submit">
                 <div class="ico">
                 </div>
             </button>
         </form>
-
-        <div class="loading"><div></div></div>
+        @* <div class="loading"><div></div></div> *@
     </div>
 </body>
 </html>
