@@ -16,12 +16,13 @@ body {
 
 .home {
     height: 70%;
+    position:relative;
 }
 
 .container_footer {
     align-items: center;
     display: flex;
-   flex-direction:column;
+    flex-direction:column;
     flex: 1;
     height: 25%;
     width: 100%;

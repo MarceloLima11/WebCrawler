@@ -2,15 +2,15 @@
 
 form.addEventListener("submit", () => {
     const div = document.createElement("div");
-    div.classList.add("overlay");
+    div.classList.add("overlay", "rgba_color");
     
-    //const loading_container = document.createElement("div");
-    //loading_container.classList.add("loading");
+    const loading_container = document.createElement("div");
+    loading_container.classList.add("loading");
+    const spin = document.createElement("div");
+    loading_container.appendChild(spin);
 
-    //const spin = document.createElement("div");
-    //loading_container.appendChild(spin);
-    //div.appendChild(loading_container);
+    div.appendChild(loading_container);
 
     document.body.appendChild(div);
-/*    document.body.classList.add("overlay");*/
+    document.body.classList.add("overlay");
 });
