@@ -1,14 +1,15 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-COPY WebUI/*.csproj ./WebUI/
+COPY . .
 RUN dotnet restore "./WebUI/WebCrawler.UI/WebCrawler.UI.csproj"
-COPY Crawler/Utils/*.csproj ./Crawler/Utils/
+RUN dotnet publish "./WebUI/WebCrawler.UI/WebCrawler.UI.csproj" -c release -o /app --no-restore
 RUN dotnet restore "./Crawler/Utils/Utils.csproj"
-COPY Crawler/WebCrawler.Application/*.csproj ./Crawler/WebCrawler.Application/
+RUN dotnet publish "./Crawler/Utils/Utils.csproj" -c release -o /app --no-restore
 RUN dotnet restore "./Crawler/WebCrawler.Application/WebCrawler.Application.csproj"
-COPY Crawler/WebCrawler.Core/*.csproj ./Crawler/WebCrawler.Core/
+RUN dotnet publish "./Crawler/WebCrawler.Application/WebCrawler.Application.csproj" -c release -o /app --no-restore
 RUN dotnet restore "./Crawler/WebCrawler.Core/WebCrawler.Core.csproj"
+RUN dotnet publish "./Crawler/WebCrawler.Core/WebCrawler.Core.csproj" -c release -o /app --no-restore
 
 COPY . ./
 RUN dotnet publish -c Release -o out
