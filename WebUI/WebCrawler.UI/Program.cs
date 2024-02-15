@@ -15,6 +15,11 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler();
     app.UseHsts();
 }
+else
+{
+    app.UseExceptionHandler("/Error/Error");
+    app.UseHsts();
+}
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
