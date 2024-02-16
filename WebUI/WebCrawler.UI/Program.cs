@@ -28,4 +28,5 @@ app.MapControllerRoute(
     pattern: "{controller=Crawler}/{action=Index}");
 
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-app.Run(port);
+var url = $"http://0.0.0.0:{port}";
+app.Run(url);
